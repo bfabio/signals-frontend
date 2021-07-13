@@ -4,7 +4,7 @@ import { useEffect, useReducer, lazy, Suspense, useMemo } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getIsAuthenticated } from 'shared/services/auth/auth'
+import { isAuthenticated } from 'shared/services/auth/auth'
 import ProtectedRoute from 'components/ProtectedRoute'
 
 import { makeSelectUserCanAccess } from 'containers/App/selectors'
@@ -66,7 +66,7 @@ const SettingsModule = () => {
   const contextValue = useMemo(() => ({ state, dispatch }), [state])
 
   useEffect(() => {
-    if (!getIsAuthenticated()) {
+    if (!isAuthenticated()) {
       return
     }
 
@@ -74,7 +74,7 @@ const SettingsModule = () => {
     storeDispatch(fetchPermissionsAction())
   }, [storeDispatch])
 
-  if (!getIsAuthenticated()) {
+  if (!isAuthenticated()) {
     return <Route component={LoginPage} />
   }
 

@@ -375,7 +375,7 @@ describe('Authz authorization', () => {
     })
   })
 
-  describe('getIsAuthenticated', () => {
+  describe('isAuthenticated', () => {
     it('returns false for expired token', () => {
       global.localStorage.getItem.mockImplementation((key) => {
         switch (key) {
@@ -386,7 +386,7 @@ describe('Authz authorization', () => {
         }
       })
 
-      expect(authz.getIsAuthenticated()).toEqual(false)
+      expect(authz.isAuthenticated()).toEqual(false)
     })
 
     it('returns false for invalid token', () => {
@@ -399,7 +399,7 @@ describe('Authz authorization', () => {
         }
       })
 
-      expect(authz.getIsAuthenticated()).toEqual(false)
+      expect(authz.isAuthenticated()).toEqual(false)
     })
 
     it('returns true', () => {
@@ -417,7 +417,7 @@ describe('Authz authorization', () => {
         }
       })
 
-      expect(authz.getIsAuthenticated()).toEqual(true)
+      expect(authz.isAuthenticated()).toEqual(true)
     })
   })
 

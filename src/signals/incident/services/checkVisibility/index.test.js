@@ -33,14 +33,14 @@ describe('The check visibility service', () => {
   })
 
   it('should show control when authorized', () => {
-    jest.spyOn(auth, 'getIsAuthenticated').mockImplementation(() => true)
+    jest.spyOn(auth, 'isAuthenticated').mockImplementation(() => true)
 
     control.authenticated = true
     expect(checkVisibility(control, incident)).toBe(true)
   })
 
   it('should hide control when not authorized', () => {
-    jest.spyOn(auth, 'getIsAuthenticated').mockImplementation(() => false)
+    jest.spyOn(auth, 'isAuthenticated').mockImplementation(() => false)
 
     control.authenticated = true
     expect(checkVisibility(control, incident)).toBe(false)

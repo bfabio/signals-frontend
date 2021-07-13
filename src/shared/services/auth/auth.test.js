@@ -5,7 +5,7 @@ import {
   getOauthDomain,
   getAuth,
   getAccessToken,
-  getIsAuthenticated,
+  isAuthenticated,
   getAuthHeaders,
   authenticate,
   login,
@@ -90,11 +90,11 @@ describe('auth', () => {
     it('calls getAccessToken function on auth instance', () => {
       savedOauthDomain = 'keycloak'
       const auth = getAuth()
-      jest.spyOn(auth, 'getIsAuthenticated')
+      jest.spyOn(auth, 'isAuthenticated')
 
-      getIsAuthenticated()
+      isAuthenticated()
 
-      expect(auth.getIsAuthenticated).toHaveBeenCalled()
+      expect(auth.isAuthenticated).toHaveBeenCalled()
     })
   })
 

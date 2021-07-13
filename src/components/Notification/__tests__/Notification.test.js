@@ -5,7 +5,7 @@ import { history, withAppContext } from 'test/utils'
 import { ascDefaultTheme as theme } from '@amsterdam/asc-ui'
 import 'jest-styled-components'
 
-import { getIsAuthenticated } from 'shared/services/auth/auth'
+import { isAuthenticated } from 'shared/services/auth/auth'
 
 import {
   ONCLOSE_TIMEOUT,
@@ -38,7 +38,7 @@ describe('components/Notification', () => {
   })
 
   it('renders correctly when not logged in', () => {
-    getIsAuthenticated.mockImplementation(() => false)
+    isAuthenticated.mockImplementation(() => false)
 
     const title = 'Here be dragons'
     const message = 'hic sunt dracones'
@@ -64,7 +64,7 @@ describe('components/Notification', () => {
   })
 
   it('renders correctly when logged in', () => {
-    getIsAuthenticated.mockImplementation(() => true)
+    isAuthenticated.mockImplementation(() => true)
 
     const { container } = render(
       withAppContext(<Notification title="Foo bar" />)
@@ -355,7 +355,7 @@ describe('components/Notification', () => {
   })
 
   it('slides up when the close button is clicked', () => {
-    getIsAuthenticated.mockImplementation(() => true)
+    isAuthenticated.mockImplementation(() => true)
 
     const onClose = jest.fn()
 
@@ -381,7 +381,7 @@ describe('components/Notification', () => {
   })
 
   it('fades out up when the close button is clicked', () => {
-    getIsAuthenticated.mockImplementation(() => false)
+    isAuthenticated.mockImplementation(() => false)
 
     const onClose = jest.fn()
 

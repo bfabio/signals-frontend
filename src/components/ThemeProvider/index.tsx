@@ -3,7 +3,7 @@
 import type { FunctionComponent } from 'react'
 import { ThemeProvider as ASCThemeProvider } from '@amsterdam/asc-ui'
 
-import { getIsAuthenticated } from 'shared/services/auth/auth'
+import { isAuthenticated } from 'shared/services/auth/auth'
 import configuration from 'shared/services/configuration/configuration'
 import type { Theme } from 'types/theme'
 import type { RecursivePartial } from 'types/helpers'
@@ -13,7 +13,7 @@ export const getConfig: (theme?: RecursivePartial<Theme>) => Theme = (
 ) => {
   const config = { ...defaultConfig }
 
-  if (!getIsAuthenticated()) {
+  if (!isAuthenticated()) {
     config.maxGridWidth = 960
     config.layouts = {
       small: {

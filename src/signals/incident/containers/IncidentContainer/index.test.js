@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 jest.mock('shared/services/auth/auth', () => ({
   __esModule: true,
   ...jest.requireActual('shared/services/auth/auth'),
-  getIsAuthenticated: () => true,
+  isAuthenticated: () => true,
 }))
 
 jest.mock('signals/incident/components/IncidentClassification', () => () => (

@@ -63,7 +63,7 @@ export const logout = () => {
 /**
  * Returns boolean indicating if user is authenticated (with non-expired token).
  */
-export const getIsAuthenticated = () => getAuth().getIsAuthenticated()
+export const isAuthenticated = () => getAuth().isAuthenticated()
 
 /**
  * Creates an object containing the authorization headers needed for an API call.

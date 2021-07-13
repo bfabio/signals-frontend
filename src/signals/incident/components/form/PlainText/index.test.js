@@ -34,7 +34,7 @@ describe('Form component <PlainText />', () => {
   })
 
   beforeEach(() => {
-    jest.spyOn(auth, 'getIsAuthenticated').mockImplementation(() => false)
+    jest.spyOn(auth, 'isAuthenticated').mockImplementation(() => false)
   })
 
   afterEach(() => {
@@ -102,7 +102,7 @@ describe('Form component <PlainText />', () => {
     })
 
     it('should render plain text with links correctly when authenticated', () => {
-      jest.spyOn(auth, 'getIsAuthenticated').mockImplementation(() => true)
+      jest.spyOn(auth, 'isAuthenticated').mockImplementation(() => true)
       const linkText = 'the-link'
       const linkAuthenticatedText = 'auth-link'
       const props = getProps({
@@ -235,7 +235,7 @@ describe('Form component <PlainText />', () => {
     })
 
     it('should render no plain text without meta when authenticated', () => {
-      jest.spyOn(auth, 'getIsAuthenticated').mockImplementation(() => true)
+      jest.spyOn(auth, 'isAuthenticated').mockImplementation(() => true)
       const props = getProps(null)
 
       render(withAppContext(<PlainText {...props} />))

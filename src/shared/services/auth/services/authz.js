@@ -43,7 +43,7 @@ class Authz {
     this.handleAuthorizationCallback() // Handle a callback from the OAuth2 authorization service
   }
 
-  getIsAuthenticated() {
+  isAuthenticated() {
     const expiresAt = parseAccessToken(this.getAccessToken())?.expiresAt
 
     if (!expiresAt) return false
@@ -56,7 +56,7 @@ class Authz {
   authenticate() {
     this.init()
 
-    if (this.getIsAuthenticated()) {
+    if (this.isAuthenticated()) {
       const accessToken = this.getAccessToken()
       const { name, scopes } = parseAccessToken(accessToken)
 
